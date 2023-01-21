@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d829b2eaf9bef9646b10f3d031e4e45f, type: 3}
-  m_Name: SpiritArrow
+  m_Name: Heal
   m_EditorClassIdentifier: 
-  _name: Spirit Arrows
-  _description: Launch Spirit Arrows
+  _name: Heal
+  _description: Healing himself
   _category: 
   _pointsCost: 5
-  _icon: {fileID: 21300000, guid: 0825dfa25de4551469e65496af7b3c71, type: 3}
+  _icon: {fileID: 21300000, guid: bb67b03c2969d104caba950c446f8c8d, type: 3}
+  _skillConfig:
+  - {fileID: 11400000, guid: af2f6a0f83edf3b41be97e2ecad2a81b, type: 2}
+  - {fileID: 11400000, guid: 5c93bd4cbf69c74489066ec9812cec2c, type: 2}

@@ -1,22 +1,28 @@
+using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 [CreateAssetMenu]
 public class SkillConfig : ScriptableObject {
 
-    [SerializeField]
+    [SerializeField, XmlAttribute("name")]
     private string _name;
 
-    [SerializeField]
+    [SerializeField, XmlAttribute("description")]
     private string _description;
 
-    [SerializeField]
+    [SerializeField, XmlAttribute("category")]
     private string _category;
 
-    [SerializeField]
+    [SerializeField, XmlAttribute("pointCost")]
     private int _pointsCost;
 
-    [SerializeField]
+    [SerializeField, XmlAttribute("icon")]
     private Sprite _icon;
+
+    //for testing the build, serialize/deserialize will rework it
+    [SerializeField]
+    private List<SkillConfig> _requiredSkill;
 
     public Sprite Icon { get { return _icon; } }
     public string Name { get { return _name; } }

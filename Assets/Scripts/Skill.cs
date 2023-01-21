@@ -6,6 +6,11 @@ public class Skill : IActiveAbility {
     private Skill[] _requiredSkills;
     private SkillLearnStatus _status = SkillLearnStatus.Undiscovered;
 
+    public SkillLearnStatus Status {
+        get { return _status; }
+        set { _status = value; }
+    }
+
     public Skill(SkillConfig config) {
         _config = config;
     }
