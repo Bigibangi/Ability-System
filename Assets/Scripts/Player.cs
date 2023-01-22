@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
         var skills = new List<Skill>();
         for (int i = 0; i < 5; i++) {
             var skillConfig = xmlSkillLoader.SkillConfigLoad();
-            skills.Add(_skillFactory.BuildSkill((SkillConfig) skillConfig));
+            skills.Add(_skillFactory.BuildSkill(skillConfig as SkillConfig));
         }
         _skillsGraph = new Graph<Skill>(skills);
     }

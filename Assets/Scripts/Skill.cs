@@ -11,6 +11,12 @@ public class Skill : IActiveAbility {
         set { _status = value; }
     }
 
+    public SkillConfig Config {
+        get {
+            return _config;
+        }
+    }
+
     public Skill(SkillConfig config) {
         _config = config;
     }
