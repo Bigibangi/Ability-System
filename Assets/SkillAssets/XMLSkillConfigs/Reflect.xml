@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<skill name="Reflect"
+       description ="Reflect Projectile"
+       category="">
+  <pointCost>5</pointCost>
+  <icon></icon>
+</skill>

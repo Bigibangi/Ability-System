@@ -14,18 +14,18 @@ public class SkillConfig : ScriptableObject {
     [SerializeField, XmlAttribute("category")]
     private string _category;
 
-    [SerializeField, XmlAttribute("pointCost")]
+    [SerializeField, XmlElement("pointCost")]
     private int _pointsCost;
 
-    [SerializeField, XmlAttribute("icon")]
+    [SerializeField, XmlElement("icon")]
     private Sprite _icon;
 
     //for testing the build, serialize/deserialize will rework it
     [SerializeField]
     private List<SkillConfig> _requiredSkill;
 
-    public Sprite Icon { get { return _icon; } }
     public string Name { get { return _name; } }
     public string Description { get { return _description; } }
     public int PointCost { get { return _pointsCost; } }
+    public Sprite Icon { get { return _icon; } }
 }

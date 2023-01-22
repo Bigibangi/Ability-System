@@ -4,9 +4,11 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SkillFactory : ScriptableObject {
 
-    public Skill BuildSkill(SkillConfig skillConfig) {
+    public Skill BuildSkill(
+        SkillConfig skillConfig,
+        SkillLearnStatus learnStatus = SkillLearnStatus.Undiscovered) {
         var skill = new Skill(skillConfig);
-        skill.Status = SkillLearnStatus.Undiscovered;
+        skill.Status = learnStatus;
         return skill;
     }
 }

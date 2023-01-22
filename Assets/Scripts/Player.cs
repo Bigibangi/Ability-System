@@ -19,5 +19,10 @@ public class Player : MonoBehaviour {
     }
 
     private void Awake() {
+        var xmlSkillLoader = new XMLSkillLoader();
+        for (int i = 0; i < 5; i++) {
+            var skillConfig = xmlSkillLoader.SkillConfigLoad();
+            _skills[i] = _skillFactory.BuildSkill((SkillConfig) skillConfig);
+        }
     }
 }
