@@ -1,16 +1,21 @@
-using UnityEngine;
+﻿using System.Collections.Generic;
 
-public class Graph : MonoBehaviour {
+public class Graph<T> {
+    private readonly Node<T>[] _nodes;
 
-    [SerializeField]
-    private Player _player;
+    public int Count { get; private set; }
 
-    private Node<Skill>[] _skillsGraph;
+    public Graph(List<T> nodes) {
+        _nodes = new Node<T>[nodes.Count];
+        for (int i = 0; i < _nodes.Length; i++) {
+            _nodes[i] = new Node<T>(nodes[i]);
+        }
+        Count = _nodes.Length;
+    }
 
-    private void Awake() {
-        _skillsGraph = new Node<Skill>[_player.SkillCount];
-        for (int i = 0; i < _skillsGraph.Length; i++) {
-            _skillsGraph[i] = new Node<Skill>();
+    public IEnumerable<Node<T>> GetAllNodes() {
+        foreach (var node in _nodes) {
+            yield return node;
         }
     }
 }

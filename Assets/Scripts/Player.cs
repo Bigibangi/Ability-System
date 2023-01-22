@@ -6,23 +6,23 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private SkillFactory _skillFactory;
 
-    private List<Skill> _skills = new List<Skill>();
+    private Graph<Skill> _skillsGraph;
 
     public int SkillCount {
-        get { return _skills.Count; }
+        get { return _skillsGraph.Count; }
     }
 
     public IEnumerable<Skill> GetSkills() {
-        foreach (var skill in _skills) {
-            yield return skill;
-        }
+        yield return (Skill) _skillsGraph.GetAllNodes();
     }
 
     private void Awake() {
         var xmlSkillLoader = new XMLSkillLoader();
+        var skills = new List<Skill>();
         for (int i = 0; i < 5; i++) {
             var skillConfig = xmlSkillLoader.SkillConfigLoad();
-            _skills[i] = _skillFactory.BuildSkill((SkillConfig) skillConfig);
+            skills.Add(_skillFactory.BuildSkill((SkillConfig) skillConfig));
         }
+        _skillsGraph = new Graph<Skill>(skills);
     }
 }
