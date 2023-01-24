@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<skill xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="SpiritArrows" description="Launch Spirit Arrows">
+  <pointCost>5</pointCost>
+  <icon>
+    <name>UI_Skill_Icon_SpiritArrows</name>
+    <hideFlags>None</hideFlags>
+  </icon>
+  <Status>Undiscovered</Status>
+</skill>

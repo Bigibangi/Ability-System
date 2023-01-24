@@ -1,5 +1,7 @@
+using System.Xml.Serialization;
 using UnityEngine;
 
+[XmlRoot(ElementName = "skill")]
 public class Skill : IActiveAbility {
     private SkillConfig _config;
 
@@ -11,14 +13,10 @@ public class Skill : IActiveAbility {
         set { _status = value; }
     }
 
-    public SkillConfig Config {
-        get {
-            return _config;
-        }
-    }
+    public SkillConfig Config => _config;
 
-    public Skill(SkillConfig config) {
-        _config = config;
+    public Skill(SkillConfig skillConfig) {
+        _config = skillConfig;
     }
 
     public virtual void Activate() {

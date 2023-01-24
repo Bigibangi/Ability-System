@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 
-[CreateAssetMenu, XmlRoot]
+[CreateAssetMenu, XmlRoot(ElementName = "skill")]
 public class SkillConfig : ScriptableObject {
 
     [SerializeField, XmlAttribute("name")]

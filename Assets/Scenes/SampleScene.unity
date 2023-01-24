@@ -1390,7 +1390,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506e14472367bbe44838c33b83333f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillFactory: {fileID: 0}
+  _player: {fileID: 1023992028}
+  _skillIconPrefab: {fileID: 4692057793513007080, guid: fd6476807e440eb46b26f58a3b0c1b26, type: 3}
 --- !u!1 &1660028185
 GameObject:
   m_ObjectHideFlags: 0

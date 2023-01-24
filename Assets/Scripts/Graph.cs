@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 
 public class Graph<T> {
     private readonly Node<T>[] _nodes;
@@ -13,9 +14,9 @@ public class Graph<T> {
         Count = _nodes.Length;
     }
 
-    public IEnumerable<Node<T>> GetAllNodes() {
+    public IEnumerable<T> GetAllNodesContent() {
         foreach (var node in _nodes) {
-            yield return node;
+            yield return node.obj;
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<skill name="Reflect"
-       description ="Reflect Projectile"
-       category="">
+<?xml version="1.0"?>
+<skill xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Reflect" description="Reflect Projectile">
   <pointCost>5</pointCost>
-  <icon></icon>
+  <icon>
+    <name>UI_Skill_Icon_Reflect</name>
+    <hideFlags>None</hideFlags>
+  </icon>
+  <Status>Undiscovered</Status>
 </skill>

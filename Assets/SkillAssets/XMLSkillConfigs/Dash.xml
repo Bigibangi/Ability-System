@@ -1,7 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<skill name="Dash"
-       description ="Launching himself toward"
-       category="">
+<?xml version="1.0"?>
+<skill xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Dash" description="Launching himself toward">
   <pointCost>5</pointCost>
-  <icon></icon>
+  <icon>
+    <name>UI_Skill_Icon_Dash</name>
+    <hideFlags>None</hideFlags>
+  </icon>
+  <Status>Undiscovered</Status>
 </skill>

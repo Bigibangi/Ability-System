@@ -13,16 +13,9 @@ public class Player : MonoBehaviour {
     }
 
     public IEnumerable<Skill> GetSkills() {
-        yield return (Skill) _skillsGraph.GetAllNodes();
+        return _skillsGraph.GetAllNodesContent();
     }
 
     private void Awake() {
-        var xmlSkillLoader = new XMLSkillLoader();
-        var skills = new List<Skill>();
-        for (int i = 0; i < 5; i++) {
-            var skillConfig = xmlSkillLoader.SkillConfigLoad();
-            skills.Add(_skillFactory.BuildSkill(skillConfig as SkillConfig));
-        }
-        _skillsGraph = new Graph<Skill>(skills);
     }
 }

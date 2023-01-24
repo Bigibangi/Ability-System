@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<skill name="Spirit Arrows"
-       description ="Launch Spirit Arrows"
-       category="">
-  <pointCost>5</pointCost>
-  <icon></icon>
-</skill>

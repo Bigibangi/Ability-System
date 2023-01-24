@@ -13,7 +13,16 @@ public class GraphDisplay : MonoBehaviour {
     private List<Skill> _skills;
 
     private void Awake() {
-        VisualizeSkill(_player.GetSkills() as Skill);
+        _skills = new List<Skill>();
+        foreach (var skill in _player.GetSkills()) {
+            _skills.Add(skill);
+        }
+    }
+
+    private void OnEnable() {
+    }
+
+    private void OnDisable() {
     }
 
     public void VisualizeSkill(Skill skill) {
