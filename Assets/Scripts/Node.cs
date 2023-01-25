@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 
-public class Node<T> {
-    public readonly T obj;
-    public readonly List<Node<T>> incidentNodes;
+public class Node<DataType> {
+    public readonly DataType obj;
+    public readonly List<Node<DataType>> incidentNodes;
 
-    public Node(T obj) {
+    public Node(DataType obj) {
         this.obj = obj;
     }
 }

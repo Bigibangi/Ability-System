@@ -1,7 +1,5 @@
-using System.Xml.Serialization;
 using UnityEngine;
 
-[XmlRoot(ElementName = "skill")]
 public class Skill : IActiveAbility {
     private SkillConfig _config;
 

@@ -926,6 +926,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillFactory: {fileID: 11400000, guid: 2adb9e9da68a38744ac96215822f36c0, type: 2}
+  _skillConfigs:
+  - {fileID: 11400000, guid: 5c93bd4cbf69c74489066ec9812cec2c, type: 2}
+  - {fileID: 11400000, guid: af2f6a0f83edf3b41be97e2ecad2a81b, type: 2}
+  - {fileID: 11400000, guid: 3f4d25a2470442447b68d041d431a170, type: 2}
+  - {fileID: 11400000, guid: f6e0ab0e910bb7c47a3038da91fada4b, type: 2}
+  - {fileID: 11400000, guid: 216ec82c58bd946469a863eeda92f979, type: 2}
 --- !u!4 &1023992029
 Transform:
   m_ObjectHideFlags: 0
