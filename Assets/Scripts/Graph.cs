@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public class Graph<T> {
     private readonly Node<T>[] _nodes;

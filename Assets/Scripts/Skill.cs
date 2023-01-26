@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Skill : IActiveAbility {
@@ -12,6 +13,8 @@ public class Skill : IActiveAbility {
     }
 
     public SkillConfig Config => _config;
+
+    public Skill[] RequiredSkills => _requiredSkills;
 
     public Skill(SkillConfig skillConfig) {
         _config = skillConfig;

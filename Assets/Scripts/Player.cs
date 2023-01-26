@@ -15,8 +15,8 @@ public class Player : MonoBehaviour {
         get { return _skillsGraph.Count; }
     }
 
-    public IEnumerable<Skill> GetSkills() {
-        return _skillsGraph.Nodes;
+    public Graph<Skill> GetSkills() {
+        return _skillsGraph;
     }
 
     private void Awake() {

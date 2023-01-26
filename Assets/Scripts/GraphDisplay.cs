@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +15,7 @@ public class GraphDisplay : MonoBehaviour {
 
     #region Fields
 
-    private List<Skill> _skills;
+    private Graph<Skill> _skills;
     private Sprite _defaultIcon;
 
     #endregion Fields
@@ -30,11 +29,8 @@ public class GraphDisplay : MonoBehaviour {
     #region Monobehaviour
 
     private void Awake() {
-        _skills = new List<Skill>();
-        foreach (var skill in _player.GetSkills()) {
-            _skills.Add(skill);
-            VisualizeSkill(skill);
-        }
+        _skills = _player.GetSkills();
+        VisualTreeSkills();
     }
 
     private void OnValidate() {
@@ -52,10 +48,20 @@ public class GraphDisplay : MonoBehaviour {
 
     #endregion Monobehaviour
 
-    public void VisualizeSkill(Skill skill) {
-        var skillDisplay = Instantiate(_skillIconPrefab);
-        skillDisplay.transform.SetParent(transform, false);
-        skillDisplay.GetComponent<Image>().sprite =
+    #region Visualizing
+
+    public void VisualTreeSkills() {
+        foreach (var skill in _skills.Nodes) {
+            VisualizeSkill(skill);
+        }
+    }
+
+    private void VisualizeSkill(Skill skill) {
+        var skillIcon = Instantiate(_skillIconPrefab);
+        skillIcon.transform.SetParent(transform, false);
+        skillIcon.GetComponent<Image>().sprite =
             skill.Config.Icon == null ? _defaultIcon : skill.Config.Icon;
     }
+
+    #endregion Visualizing
 }
