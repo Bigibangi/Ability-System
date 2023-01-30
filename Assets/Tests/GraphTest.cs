@@ -37,8 +37,8 @@ public class GraphTest {
         // Arrange.
         var lazyIntNodes = new List<int>();
         // Act.
-        lazyIntNodes.Add((int) (object) graph.Nodes);
+        lazyIntNodes.Add((int) (object) graph.NodesContent);
         // Assert.
-        lazyIntNodes.Should().BeEquivalentTo(graph.Nodes);
+        lazyIntNodes.Should().BeEquivalentTo(graph.NodesContent);
     }
 }

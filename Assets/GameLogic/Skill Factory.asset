@@ -12,9 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0904d65ae191ae4f91df48da3bc0f5f, type: 3}
   m_Name: Skill Factory
   m_EditorClassIdentifier: 
-  _skillList:
-  - {fileID: 11400000, guid: 5c93bd4cbf69c74489066ec9812cec2c, type: 2}
-  - {fileID: 11400000, guid: af2f6a0f83edf3b41be97e2ecad2a81b, type: 2}
-  - {fileID: 11400000, guid: 3f4d25a2470442447b68d041d431a170, type: 2}
-  - {fileID: 11400000, guid: f6e0ab0e910bb7c47a3038da91fada4b, type: 2}
-  - {fileID: 11400000, guid: 216ec82c58bd946469a863eeda92f979, type: 2}
+  _skillPrefab: {fileID: 4692057793513007080, guid: fd6476807e440eb46b26f58a3b0c1b26, type: 3}
+  _skillTree: {fileID: 0}

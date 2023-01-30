@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class SkillConfig : ScriptableObject {
+public class SkillSettings : ScriptableObject {
 
     [SerializeField]
     private string _name;
@@ -17,14 +17,15 @@ public class SkillConfig : ScriptableObject {
     private int _pointsCost;
 
     [SerializeField]
-    private Sprite _icon;
+    private Sprite _sprite;
 
     //for testing the build, serialize/deserialize will rework it
     [SerializeField]
-    private List<SkillConfig> _requiredSkill;
+    private List<SkillSettings> _requiredSkills;
 
     public string Name { get { return _name; } }
     public string Description { get { return _description; } }
     public int PointCost { get { return _pointsCost; } }
-    public Sprite Icon { get { return _icon; } }
+    public Sprite Sprite { get { return _sprite; } }
+    public List<SkillSettings> RequiredSkills { get { return _requiredSkills; } }
 }

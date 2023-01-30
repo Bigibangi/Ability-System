@@ -2,9 +2,9 @@
     "name": "Tests",
     "rootNamespace": "",
     "references": [
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner",
-        "GameTesting"
+        "GUID:27619889b8ba8c24980f49ee34dbb44a",
+        "GUID:0acc523941302664db1f4e527237feb3",
+        "GUID:519f56ca7cd97a845993e4a72dc7ec81"
     ],
     "includePlatforms": [
         "Editor"

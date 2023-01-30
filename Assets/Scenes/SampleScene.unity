@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -417,18 +417,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1111214390}
+        m_TargetAssemblyTypeName: SkillPointsCount, Assembly-CSharp
+        m_MethodName: EarnPoint
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &263988300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -704,6 +704,7 @@ GameObject:
   - component: {fileID: 898337061}
   - component: {fileID: 898337060}
   - component: {fileID: 898337059}
+  - component: {fileID: 898337062}
   m_Layer: 5
   m_Name: Button_SkillLearn
   m_TagString: Untagged
@@ -813,6 +814,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898337057}
   m_CullTransparentMesh: 1
+--- !u!114 &898337062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898337057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5985846012c5e8546bed62fafd9b23d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +920,7 @@ GameObject:
   - component: {fileID: 1023992029}
   - component: {fileID: 1023992028}
   m_Layer: 0
-  m_Name: Player
+  m_Name: SkillContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -926,7 +939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillFactory: {fileID: 11400000, guid: 2adb9e9da68a38744ac96215822f36c0, type: 2}
-  _skillConfigs:
+  _skillSettings:
   - {fileID: 11400000, guid: 5c93bd4cbf69c74489066ec9812cec2c, type: 2}
   - {fileID: 11400000, guid: af2f6a0f83edf3b41be97e2ecad2a81b, type: 2}
   - {fileID: 11400000, guid: 3f4d25a2470442447b68d041d431a170, type: 2}
@@ -1091,6 +1104,7 @@ GameObject:
   - component: {fileID: 1111214389}
   - component: {fileID: 1111214391}
   - component: {fileID: 1111214390}
+  - component: {fileID: 1111214392}
   m_Layer: 5
   m_Name: SkillPointsCount
   m_TagString: Untagged
@@ -1118,6 +1132,27 @@ RectTransform:
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1111214390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111214388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9f797ab6bd49b046af6d0ebe4ec66e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillContainer: {fileID: 0}
+--- !u!222 &1111214391
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111214388}
+  m_CullTransparentMesh: 1
+--- !u!114 &1111214392
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1164,13 +1199,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 88
-  m_fontSizeBase: 88
+  m_fontSize: 64
+  m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1206,14 +1241,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1111214391
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111214388}
-  m_CullTransparentMesh: 1
 --- !u!1 &1198285266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,7 +1388,7 @@ GameObject:
   - component: {fileID: 1372799612}
   m_Layer: 5
   m_Name: SkillTree
-  m_TagString: Untagged
+  m_TagString: SkillTree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1397,9 +1424,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 506e14472367bbe44838c33b83333f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1023992028}
+  _skillContainer: {fileID: 1023992028}
   _skillIconPrefab: {fileID: 4692057793513007080, guid: fd6476807e440eb46b26f58a3b0c1b26, type: 3}
-  _offset: 75
 --- !u!114 &1372799612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,7 +1445,7 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 0
   fDistance: 150
-  MinAngle: 114
+  MinAngle: 60
   MaxAngle: 360
   StartAngle: 0
 --- !u!1 &1399047471

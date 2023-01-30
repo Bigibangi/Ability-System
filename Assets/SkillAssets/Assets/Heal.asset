@@ -17,6 +17,6 @@ MonoBehaviour:
   _category: 
   _pointsCost: 5
   _icon: {fileID: 21300000, guid: bb67b03c2969d104caba950c446f8c8d, type: 3}
-  _skillConfig:
-  - {fileID: 11400000, guid: af2f6a0f83edf3b41be97e2ecad2a81b, type: 2}
+  _requiredSkills:
   - {fileID: 11400000, guid: 5c93bd4cbf69c74489066ec9812cec2c, type: 2}
+  - {fileID: 11400000, guid: af2f6a0f83edf3b41be97e2ecad2a81b, type: 2}
