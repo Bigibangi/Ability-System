@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,25 +28,28 @@ public class SkillView : MonoBehaviour {
 
     #region Monobehaviour
 
-    private void Awake() {
+    public void Awake() {
         _icon = gameObject.GetComponent<Image>();
-        //Visualize();
-    }
-
-    private void Update() {
-        Visualize();
+        StartCoroutine(Visualize());
     }
 
     #endregion Monobehaviour
 
-    private void Visualize() {
-        _icon.sprite = _skill.Config.Sprite;
-        if (_skill.Status == SkillLearnStatus.Undiscovered) {
-            //_icon.color = _disableColor;
+    public SkillLearnStatus GetSkillStatus() {
+        return _skill.Status;
+    }
+
+    private IEnumerator Visualize() {
+        yield return new WaitForFixedUpdate();
+        if (_skill != null) {
+            _icon.sprite = _skill.Config.Sprite;
+            if (_skill.Status == SkillLearnStatus.Undiscovered) {
+                _icon.color = _disableColor;
+            }
+            var pointString = gameObject.GetComponentInChildren<Text>();
+            pointString.text = _skill.Config.PointCost.ToString();
+            pointString.color = Color.green;
+            pointString.alignment = TextAnchor.LowerRight;
         }
-        var pointString = gameObject.GetComponentInChildren<Text>();
-        pointString.text = _skill.Config.PointCost.ToString();
-        pointString.color = Color.green;
-        pointString.alignment = TextAnchor.LowerRight;
     }
 }

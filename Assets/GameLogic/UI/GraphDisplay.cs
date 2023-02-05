@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,10 +8,13 @@ public class GraphDisplay : MonoBehaviour {
     #region Editor
 
     [SerializeField]
-    private SkillContainer _skillContainer;
+    private SkillStorage _skillContainer;
 
     [SerializeField]
     private GameObject _skillIconPrefab;
+
+    [SerializeField]
+    private SkillMenu _skillMenu;
 
     #endregion Editor
 
@@ -28,6 +32,7 @@ public class GraphDisplay : MonoBehaviour {
         _root.name = "Base";
         _root.transform.SetParent(transform, false);
         _skills = _skillContainer.GetSkills();
+        VisualTreeSkills();
     }
 
     private void OnValidate() {
@@ -54,13 +59,11 @@ public class GraphDisplay : MonoBehaviour {
     }
 
     private void VisualizeSkillNode(Node<Skill> skillNode) {
-        //skillIcon = Instantiate(_skillIconPrefab);
-        //skillIcon.transform.SetParent(transform, false);
-        //skillIcon.GetComponent<Image>().sprite = skillNode.content.Config.Icon;
-        //var pointString = skillIcon.gameObject.GetComponentInChildren<Text>();
-        //pointString.text = skillNode.content.Config.PointCost.ToString();
-        //pointString.color = Color.green;
-        //pointString.alignment = TextAnchor.LowerRight;
+        var skillIcon = Instantiate(_skillIconPrefab);
+        skillIcon.transform.SetParent(transform, false);
+        skillIcon.name = skillNode.content.Config.Name;
+        var skillView = skillIcon.gameObject.GetComponentInChildren<SkillView>();
+        skillView.Skill = skillNode.content;
     }
 
     #endregion Visualizing

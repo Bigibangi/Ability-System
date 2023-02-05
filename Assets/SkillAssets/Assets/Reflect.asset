@@ -16,6 +16,6 @@ MonoBehaviour:
   _description: Reflect Projectile
   _category: 
   _pointsCost: 5
-  _icon: {fileID: 21300000, guid: f6b8b85cbdc82ce439a41ae3d56d57ee, type: 3}
+  _sprite: {fileID: 21300000, guid: f6b8b85cbdc82ce439a41ae3d56d57ee, type: 3}
   _requiredSkills:
   - {fileID: 11400000, guid: 3f4d25a2470442447b68d041d431a170, type: 2}

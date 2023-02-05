@@ -16,5 +16,5 @@ MonoBehaviour:
   _description: Fire Arrow Barrage in area
   _category: 
   _pointsCost: 4
-  _icon: {fileID: 21300000, guid: 125bb49b217257347be09ede099b888d, type: 3}
-  _requiredSkill: []
+  _sprite: {fileID: 21300000, guid: 125bb49b217257347be09ede099b888d, type: 3}
+  _requiredSkills: []

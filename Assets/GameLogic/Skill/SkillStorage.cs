@@ -1,7 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillContainer : MonoBehaviour {
+public class SkillStorage : MonoBehaviour {
 
     #region Editor
 
@@ -33,29 +34,19 @@ public class SkillContainer : MonoBehaviour {
     private void Awake() {
         _skillsGraph = new Graph<Skill>();
         SetUp(_skillsGraph);
-        //_skillsGraph = new Graph<Skill>(skillList);
-        //foreach (var node in _skillsGraph.Nodes) {
-        //    var skill = node.obj as Skill;
-        //    if (skill.Config.RequiredSkills.Count > 0) {
-        //        foreach (var skillConfig in skill.Config.RequiredSkills) {
-        //            var x = _skillsGraph
-        //                .Nodes
-        //                .Select(x => x)
-        //                .Where(x => x.obj.RequiredSkills.Contains(skill));
-        //            node.Connect(x as Node<Skill>);
-        //        }
-        //    }
-        //}
     }
 
     #endregion MonoBehaviour
+
+    public Action<int> OnSkillPointsChanged;
 
     public Graph<Skill> GetSkills() {
         return _skillsGraph;
     }
 
-    public void EarnPoint(int points) {
-        _points = points;
+    public void EarnPoint() {
+        _points++;
+        OnSkillPointsChanged?.Invoke(_points);
     }
 
     private void SetUp(Graph<Skill> skillsGraph) {
