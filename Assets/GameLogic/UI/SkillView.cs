@@ -20,16 +20,15 @@ public class SkillView : MonoBehaviour {
 
     #endregion Fields
 
-    #region Properties
-
-    public Skill Skill { set { _skill = value; } }
-
-    #endregion Properties
-
     #region Monobehaviour
 
-    public void Awake() {
+    private void Awake() {
         _icon = gameObject.GetComponent<Image>();
+        _enableColor = _icon.color;
+        StartCoroutine(Visualize());
+    }
+
+    private void Update() {
         StartCoroutine(Visualize());
     }
 
@@ -41,10 +40,14 @@ public class SkillView : MonoBehaviour {
 
     private IEnumerator Visualize() {
         yield return new WaitForFixedUpdate();
+        _skill = gameObject.GetComponentInParent<SkillNode>().Skill;
         if (_skill != null) {
             _icon.sprite = _skill.Config.Sprite;
             if (_skill.Status == SkillLearnStatus.Undiscovered) {
                 _icon.color = _disableColor;
+            }
+            else if (_skill.Status == SkillLearnStatus.Discovered) {
+                _icon.color = _enableColor;
             }
             var pointString = gameObject.GetComponentInChildren<Text>();
             pointString.text = _skill.Config.PointCost.ToString();

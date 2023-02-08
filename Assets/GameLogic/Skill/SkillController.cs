@@ -3,26 +3,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SkillController : Selectable, IPointerClickHandler {
+public class SkillController : MonoBehaviour {
     private Skill _skill;
 
-    public static Action<BaseEventData> OnSelectedSkill;
-
-    public override void OnDeselect(BaseEventData eventData) {
-        Debug.Log("Deselected");
+    private void Awake() {
     }
 
-    public override void OnSelect(BaseEventData eventData) {
-        Debug.Log("Selected");
+    private void Start() {
+        _skill = GetComponentInParent<SkillNode>().Skill;
     }
 
-    public void OnPointerClick(PointerEventData eventData) {
-        var gameobject = eventData.pointerClick;
-        Debug.Log(gameobject.name);
-        OnSelectedSkill?.Invoke(eventData);
-    }
-
-    private void LearnSkill() {
+    public void LearnSkill() {
+        Debug.Log("Skill Learned");
+        _skill.Status = SkillLearnStatus.Discovered;
     }
 
     private void ForgetSkill() {

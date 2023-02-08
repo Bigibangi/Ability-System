@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SkillMenu : MonoBehaviour {
+    public const string LEARN = "Изучить";
 
     [SerializeField]
     private Button _learnSkillButton,
@@ -29,15 +30,26 @@ public class SkillMenu : MonoBehaviour {
     }
 
     private void OnEnable() {
-        SkillController.OnSelectedSkill += ShowDetailsCurrentSelectedNode;
+        SkillNode.OnSelectedSkill += HandleSelectedObject;
+    }
+
+    private void OnDisable() {
+        SkillNode.OnSelectedSkill -= HandleSelectedObject;
+        _learnSkillButton.onClick.RemoveAllListeners();
+        _forgetAllSkillButton.onClick.RemoveAllListeners();
     }
 
     private void ShowEarnedPoints(int points) {
         _skillPointsCount.text = points.ToString();
     }
 
-    private void ShowDetailsCurrentSelectedNode(BaseEventData eventData) {
-        var currentNode = eventData.selectedObject;
-        Debug.Log("in menu " + currentNode.name);
+    private void HandleSelectedObject(BaseEventData eventData) {
+        var current = eventData.selectedObject;
+        Debug.Log("in menu " + current.name);
+        var skillStatus = current.gameObject.GetComponent<SkillNode>().Skill.Status;
+        if (skillStatus == SkillLearnStatus.Undiscovered) {
+            _learnSkillButton.gameObject.SetActive(true);
+            _learnSkillButton.onClick.AddListener(current.GetComponentInChildren<SkillController>().LearnSkill);
+        }
     }
 }

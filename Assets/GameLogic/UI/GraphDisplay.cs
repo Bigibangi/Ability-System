@@ -58,12 +58,12 @@ public class GraphDisplay : MonoBehaviour {
     private void VisualizeConnections() {
     }
 
-    private void VisualizeSkillNode(Node<Skill> skillNode) {
+    private void VisualizeSkillNode(Node<Skill> node) {
         var skillIcon = Instantiate(_skillIconPrefab);
         skillIcon.transform.SetParent(transform, false);
-        skillIcon.name = skillNode.content.Config.Name;
-        var skillView = skillIcon.gameObject.GetComponentInChildren<SkillView>();
-        skillView.Skill = skillNode.content;
+        skillIcon.name = node.content.Config.Name;
+        var skillNode = skillIcon.gameObject.GetComponentInChildren<SkillNode>();
+        skillNode.Skill = node.content;
     }
 
     #endregion Visualizing
