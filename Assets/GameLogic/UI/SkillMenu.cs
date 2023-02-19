@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -23,6 +22,7 @@ public class SkillMenu : MonoBehaviour {
 
     private void Awake() {
         _skillStorage.OnSkillPointsChanged += ShowEarnedPoints;
+        _forgetAllSkillButton.onClick.AddListener(ForgetAllSkillButton);
         _learnSkillButton.onClick.RemoveAllListeners();
         _forgetSkillButton.onClick.RemoveAllListeners();
         _learnSkillButton.gameObject.SetActive(false);
@@ -84,5 +84,16 @@ public class SkillMenu : MonoBehaviour {
             });
             break;
         }
+    }
+
+    private void ForgetAllSkillButton() {
+        int pointsToReturn = 0;
+        foreach (var skill in _skillStorage.GetSkills().NodesContent) {
+            if (skill.Status == SkillLearnStatus.Discovered) {
+                skill.Status = SkillLearnStatus.Undiscovered;
+                pointsToReturn += skill.Config.PointCost;
+            }
+        }
+        _skillStorage.Points += pointsToReturn;
     }
 }
