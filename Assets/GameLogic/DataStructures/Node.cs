@@ -17,7 +17,7 @@ public class Node<DataType> {
     public Node(
         DataType obj,
         List<Node<DataType>> incidentNodes = null) {
-        this.content = obj;
+        content = obj;
         _incidentNodes = incidentNodes;
     }
 

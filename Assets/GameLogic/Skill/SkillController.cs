@@ -1,23 +1,23 @@
-using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class SkillController : MonoBehaviour {
+public class SkillController {
     private Skill _skill;
 
-    private void Awake() {
+    public SkillController(Skill skill) {
+        _skill = skill;
     }
 
-    private void Start() {
-        _skill = GetComponentInParent<SkillNode>().Skill;
+    public void LearnSkill(ref int remainedPoints) {
+        remainedPoints -= _skill.Config.PointCost;
+        if (remainedPoints >= 0) {
+            _skill.Status = SkillLearnStatus.Discovered;
+        }
+        else remainedPoints += _skill.Config.PointCost;
     }
 
-    public void LearnSkill() {
-        Debug.Log("Skill Learned");
-        _skill.Status = SkillLearnStatus.Discovered;
-    }
-
-    private void ForgetSkill() {
+    public int ForgetSkill() {
+        Debug.Log("Skill Forgotten");
+        _skill.Status = SkillLearnStatus.Undiscovered;
+        return _skill.Config.PointCost;
     }
 }

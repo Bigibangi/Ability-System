@@ -40,11 +40,19 @@ public class SkillStorage : MonoBehaviour {
 
     public Action<int> OnSkillPointsChanged;
 
+    public int Points {
+        get { return _points; }
+        set {
+            _points = value;
+            OnSkillPointsChanged?.Invoke(_points);
+        }
+    }
+
     public Graph<Skill> GetSkills() {
         return _skillsGraph;
     }
 
-    public void EarnPoint() {
+    private void EarnPoint() {
         _points++;
         OnSkillPointsChanged?.Invoke(_points);
     }

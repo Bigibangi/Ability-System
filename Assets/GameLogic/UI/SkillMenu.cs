@@ -1,10 +1,10 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SkillMenu : MonoBehaviour {
-    public const string LEARN = "Изучить";
 
     [SerializeField]
     private Button _learnSkillButton,
@@ -46,10 +46,43 @@ public class SkillMenu : MonoBehaviour {
     private void HandleSelectedObject(BaseEventData eventData) {
         var current = eventData.selectedObject;
         Debug.Log("in menu " + current.name);
-        var skillStatus = current.gameObject.GetComponent<SkillNode>().Skill.Status;
-        if (skillStatus == SkillLearnStatus.Undiscovered) {
+        ShowSkillDetails(current);
+    }
+
+    private void ShowSkillDetails(GameObject current) {
+        SkillNode skillNode;
+        if (current.TryGetComponent(out skillNode)) {
+            UpdateAllButtons(skillNode);
+        }
+    }
+
+    private void UpdateAllButtons(SkillNode skillNode) {
+        _learnSkillButton.gameObject.SetActive(false);
+        _forgetSkillButton.gameObject.SetActive(false);
+        var status = skillNode.Node.content.Status;
+        var remainedPoints = _skillStorage.Points;
+        switch (status) {
+            case SkillLearnStatus.Undiscovered:
+            _learnSkillButton.onClick.RemoveAllListeners();
             _learnSkillButton.gameObject.SetActive(true);
-            _learnSkillButton.onClick.AddListener(current.GetComponentInChildren<SkillController>().LearnSkill);
+            _learnSkillButton.onClick.AddListener(() => {
+                if (skillNode.TryLearnSkill(ref remainedPoints)) {
+                    UpdateAllButtons(skillNode);
+                    _skillStorage.Points = remainedPoints;
+                }
+            });
+            break;
+
+            case SkillLearnStatus.Discovered:
+            _forgetSkillButton.onClick.RemoveAllListeners();
+            _forgetSkillButton.gameObject.SetActive(true);
+            _forgetSkillButton.onClick.AddListener(() => {
+                if (skillNode.TryForgetSkill(out int pointsToReturn)) {
+                    UpdateAllButtons(skillNode);
+                    _skillStorage.Points += pointsToReturn;
+                }
+            });
+            break;
         }
     }
 }

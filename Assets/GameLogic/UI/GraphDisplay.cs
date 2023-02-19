@@ -63,7 +63,8 @@ public class GraphDisplay : MonoBehaviour {
         skillIcon.transform.SetParent(transform, false);
         skillIcon.name = node.content.Config.Name;
         var skillNode = skillIcon.gameObject.GetComponentInChildren<SkillNode>();
-        skillNode.Skill = node.content;
+        skillNode.Controller = new SkillController(node.content);
+        skillNode.Node = node;
     }
 
     #endregion Visualizing

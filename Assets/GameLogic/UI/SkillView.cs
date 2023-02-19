@@ -40,8 +40,7 @@ public class SkillView : MonoBehaviour {
 
     private IEnumerator Visualize() {
         yield return new WaitForFixedUpdate();
-        _skill = gameObject.GetComponentInParent<SkillNode>().Skill;
-        if (_skill != null) {
+        if ((_skill = gameObject.GetComponentInParent<SkillNode>().Node.content) != null) {
             _icon.sprite = _skill.Config.Sprite;
             if (_skill.Status == SkillLearnStatus.Undiscovered) {
                 _icon.color = _disableColor;
