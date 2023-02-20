@@ -18,24 +18,26 @@ public class SkillMenu : MonoBehaviour {
     private SkillStorage _skillStorage;
 
     [SerializeField]
-    private GraphDisplay _skillsGraphDisplay;
+    private GraphComponent _skillsGraphDisplay;
 
     private void Awake() {
-        _skillStorage.OnSkillPointsChanged += ShowEarnedPoints;
-        _forgetAllSkillButton.onClick.AddListener(ForgetAllSkillButton);
-        _learnSkillButton.onClick.RemoveAllListeners();
-        _forgetSkillButton.onClick.RemoveAllListeners();
-        _learnSkillButton.gameObject.SetActive(false);
-        _forgetSkillButton.gameObject.SetActive(false);
+    }
+
+    private void OnValidate() {
+        ClearAllButtons();
     }
 
     private void OnEnable() {
         SkillNode.OnSelectedSkill += HandleSelectedObject;
+        _skillStorage.OnSkillPointsChanged += ShowEarnedPoints;
+        _forgetAllSkillButton.onClick.AddListener(ForgetAllSkillButton);
     }
 
     private void OnDisable() {
         SkillNode.OnSelectedSkill -= HandleSelectedObject;
+        _skillStorage.OnSkillPointsChanged -= ShowEarnedPoints;
         _learnSkillButton.onClick.RemoveAllListeners();
+        _forgetSkillButton.onClick.RemoveAllListeners();
         _forgetAllSkillButton.onClick.RemoveAllListeners();
     }
 
@@ -68,7 +70,7 @@ public class SkillMenu : MonoBehaviour {
             _learnSkillButton.onClick.AddListener(() => {
                 if (skillNode.TryLearnSkill(ref remainedPoints)) {
                     UpdateAllButtons(skillNode);
-                    _skillStorage.Points = remainedPoints;
+                    _skillStorage.OnSkillPointsEarned(remainedPoints);
                 }
             });
             break;
@@ -79,7 +81,7 @@ public class SkillMenu : MonoBehaviour {
             _forgetSkillButton.onClick.AddListener(() => {
                 if (skillNode.TryForgetSkill(out int pointsToReturn)) {
                     UpdateAllButtons(skillNode);
-                    _skillStorage.Points += pointsToReturn;
+                    _skillStorage.OnSkillPointsEarned(pointsToReturn);
                 }
             });
             break;
@@ -94,6 +96,14 @@ public class SkillMenu : MonoBehaviour {
                 pointsToReturn += skill.Config.PointCost;
             }
         }
-        _skillStorage.Points += pointsToReturn;
+        _skillStorage.OnSkillPointsEarned(pointsToReturn);
+        ClearAllButtons();
+    }
+
+    private void ClearAllButtons() {
+        _forgetSkillButton.gameObject.SetActive(false);
+        _learnSkillButton.gameObject.SetActive(false);
+        _forgetSkillButton.onClick.RemoveAllListeners();
+        _learnSkillButton.onClick.RemoveAllListeners();
     }
 }

@@ -33,19 +33,17 @@ public class SkillStorage : MonoBehaviour {
 
     private void Awake() {
         _skillsGraph = new Graph<Skill>();
+        OnSkillPointsEarned += ChangePoints;
         SetUp(_skillsGraph);
     }
 
     #endregion MonoBehaviour
 
     public Action<int> OnSkillPointsChanged;
+    public Action<int> OnSkillPointsEarned;
 
     public int Points {
         get { return _points; }
-        set {
-            _points = value;
-            OnSkillPointsChanged?.Invoke(_points);
-        }
     }
 
     public Graph<Skill> GetSkills() {
@@ -54,6 +52,14 @@ public class SkillStorage : MonoBehaviour {
 
     private void EarnPoint() {
         _points++;
+        OnSkillPointsChanged?.Invoke(_points);
+    }
+
+    private void ChangePoints(int points) {
+        _points += points;
+        if (_points < 0) {
+            _points = 0;
+        }
         OnSkillPointsChanged?.Invoke(_points);
     }
 

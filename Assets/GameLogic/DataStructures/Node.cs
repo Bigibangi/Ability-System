@@ -36,6 +36,6 @@ public class Node<DataType> {
         if (!(obj is Node<DataType>))
             return false;
         if (obj.GetHashCode() != obj.GetHashCode()) return false;
-        return this.content.Equals(obj);
+        return content.Equals(obj);
     }
 }

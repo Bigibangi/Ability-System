@@ -11,7 +11,7 @@ public class GraphVisualTest {
     [Test]
     public void GraphVisualTestSimplePasses() {
         //Arrange
-        var graphDisplay = new GameObject().AddComponent<GraphDisplay>();
+        var graphDisplay = new GameObject().AddComponent<GraphComponent>();
         //Act
         //Assert
         Assert.IsNotNull(graphDisplay);

@@ -7,16 +7,16 @@ public class SkillController {
         _skill = skill;
     }
 
-    public void LearnSkill(ref int remainedPoints) {
+    public int LearnSkill(int remainedPoints) {
         remainedPoints -= _skill.Config.PointCost;
         if (remainedPoints >= 0) {
             _skill.Status = SkillLearnStatus.Discovered;
+            return -_skill.Config.PointCost;
         }
-        else remainedPoints += _skill.Config.PointCost;
+        return 0;
     }
 
     public int ForgetSkill() {
-        Debug.Log("Skill Forgotten");
         _skill.Status = SkillLearnStatus.Undiscovered;
         return _skill.Config.PointCost;
     }
