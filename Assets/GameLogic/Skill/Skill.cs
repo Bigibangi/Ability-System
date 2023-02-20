@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.LightingExplorerTableColumn;
 
 public class Skill : IActiveAbility {
     private SkillSettings _config;
@@ -27,5 +28,17 @@ public class Skill : IActiveAbility {
 
     public void AddRequiredSkill(Skill skill) {
         _requiredSkills.Add(skill);
+    }
+
+    public override int GetHashCode() {
+        return this.GetHashCode();
+    }
+
+    public override bool Equals(object obj) {
+        if (obj == null) return false;
+        if (!(obj is Node<DataType>))
+            return false;
+        if (obj.GetHashCode() != GetHashCode()) return false;
+        return this.Equals(obj);
     }
 }

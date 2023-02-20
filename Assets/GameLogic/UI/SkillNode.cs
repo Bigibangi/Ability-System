@@ -23,7 +23,7 @@ public class SkillNode : Selectable, IPointerClickHandler {
     }
 
     public bool TryLearnSkill(ref int pointsToReturn) {
-        if (Node.IncidentNodes == null) {
+        if (Node.IncidentNodes.Count == 0) {
             pointsToReturn = _controller.LearnSkill(pointsToReturn);
             return true;
         }
@@ -37,7 +37,7 @@ public class SkillNode : Selectable, IPointerClickHandler {
     }
 
     public bool TryForgetSkill(out int pointsToReturn) {
-        if (Node.IncidentNodes == null) {
+        if (Node.IncidentNodes.Count == 0) {
             pointsToReturn = _controller.ForgetSkill();
             return true;
         }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 public class Graph<T> {
-    private readonly List<Node<T>> _nodes = new List<Node<T>>();
+    protected readonly List<Node<T>> _nodes = new List<Node<T>>();
 
     #region Properties
 
@@ -37,7 +37,7 @@ public class Graph<T> {
 
     public Graph(List<T> nodes) {
         foreach (var node in nodes) {
-            _nodes.Add(new Node<T>(node));
+            _nodes.Add(new Node<T>(node, this));
         }
         Count = _nodes.Count;
     }

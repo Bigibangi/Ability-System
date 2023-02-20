@@ -81,6 +81,6 @@ public class SkillStorage : MonoBehaviour {
                 }
             }
         }
-        _skillsGraph = new Graph<Skill>(skillList);
+        _skillsGraph = new SkillGraph<Skill>(skillList);
     }
 }
