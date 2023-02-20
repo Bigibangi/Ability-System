@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SkillStorage : MonoBehaviour {
@@ -68,6 +69,17 @@ public class SkillStorage : MonoBehaviour {
         foreach (var skillConfig in _skillSettings) {
             var skill = _skillFactory.BuildSkill(skillConfig);
             skillList.Add(skill);
+        }
+        foreach (var skill in skillList) {
+            if (skill.Config.RequiredSkills != null) {
+                foreach (var skillConfig in skill.Config.RequiredSkills) {
+                    for (int i = 0; i < skillList.Count; i++) {
+                        if (skillList[i].Config == skillConfig) {
+                            skill.AddRequiredSkill(skillList[i]);
+                        }
+                    }
+                }
+            }
         }
         _skillsGraph = new Graph<Skill>(skillList);
     }
